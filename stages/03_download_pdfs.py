@@ -6,7 +6,7 @@ import requests
 from tqdm import tqdm
 
 cachedir = pathlib.Path('./cache')
-brickdir = pathlib.Path('./brick') / 'cir_reports_pdf'
+brickdir = pathlib.Path('./brick') / 'cir_reports.pdf'
 brickdir.mkdir(parents=True, exist_ok=True)
 
 # DOWNLOAD PDFS ================================================================

@@ -4,3 +4,6 @@ logs
 /brick
 
 __pycache__*
+.env
+log/*
+cache/*

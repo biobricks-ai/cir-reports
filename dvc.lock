@@ -1,2 +1,50 @@
 schema: '2.0'
-stages: {}
+stages:
+  get_ingredient_links:
+    cmd: python stages/01_get_ingredient_links.py
+    deps:
+    - path: stages/01_get_ingredient_links.py
+      hash: md5
+      md5: 419ee6fb2fbec591e466a1a58cd02af7
+      size: 2527
+      isexec: true
+    outs:
+    - path: cache/ingredient_page_links.json
+      hash: md5
+      md5: 8871c26dfaf39cdb150ba2a1dd8f3c0b
+      size: 223951
+  get_pdf_links:
+    cmd: python stages/02_get_pdf_links.py
+    deps:
+    - path: cache/ingredient_page_links.json
+      hash: md5
+      md5: 8871c26dfaf39cdb150ba2a1dd8f3c0b
+      size: 223951
+    - path: stages/02_get_pdf_links.py
+      hash: md5
+      md5: a9f8b66eec9c4dba1b85aa531d19b651
+      size: 2215
+      isexec: true
+    outs:
+    - path: cache/all_pdf_links.json
+      hash: md5
+      md5: b0f1fc13abfa2e6d2e15d4ae34f58cc7
+      size: 34390
+  download_pdfs:
+    cmd: python stages/03_download_pdfs.py
+    deps:
+    - path: cache/all_pdf_links.json
+      hash: md5
+      md5: b0f1fc13abfa2e6d2e15d4ae34f58cc7
+      size: 34390
+    - path: stages/03_download_pdfs.py
+      hash: md5
+      md5: b968f299304438b687e2d51c329cf5ab
+      size: 775
+      isexec: true
+    outs:
+    - path: brick/cir_reports.pdf
+      hash: md5
+      md5: 480ab5f19049da242446fff3044bb088.dir
+      size: 395549978
+      nfiles: 364

@@ -20,4 +20,4 @@ stages:
       - stages/03_download_pdfs.py
       - cache/all_pdf_links.json
     outs:
-      - brick/cir_reports_pdf
+      - brick/cir_reports.pdf
